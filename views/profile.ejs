@@ -1,0 +1,122 @@
+<style>
+    body {
+        background-image: url("/images/back3.jpg");
+    }
+
+    .heading {
+        /* border: 2px solid red; */
+        color: white;
+        text-align: center;
+        font-size: 65px;
+        text-shadow: 5px 5px #FF0000;
+    }
+
+    .selfbutn {
+        width: 45%;
+        margin-left: 25%;
+        margin-top: 15px;
+        font-size: 45px;
+    }
+
+    .dropbtn {
+        background-color: #3498DB;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .dropbtn:hover,
+    .dropbtn:focus {
+        background-color: #2980B9;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        /* position: absolute; */
+        background-color: #f1f1f1;
+        min-width: 160px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown a:hover {
+        background-color: #ddd;
+    }
+
+    .show {
+        display: block;
+    }
+</style>
+
+<body>
+
+
+
+
+    <div class="heading"><a href="/dashboard" style="text-decoration: none; color: white;">Square One <img
+                src="/images/oneplus.png" width="70px" height="95px"></a></div>
+
+    <div>
+
+        <a href="/dashboard" class="btn btn-danger">Back</a>
+    </div>
+
+
+    <div class="row mt-5">
+        <div class="col-md-12 m-auto">
+            <div class="card card-body text-center">
+
+                <p style="font-size: 60px;">Profile &#128526;</p>
+                <%-include('./partials/messages.ejs'); %>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                    <td><input type="text" id="name" name="name" class="form-control" value="<%= user.name %> " readonly /></td>
+                    </tr>
+                <tr>
+                    <th>College ID</th>
+                    <td><input type="text" id="rollnumber" name="rollnumber" class="form-control" value="<%= user.rollnumber %> " readonly />
+                    </td>
+                </tr>
+                    <tr>
+
+                        <th>Email</th>
+                        <td><input type="email" id="email" name="email" class="form-control"
+                                value="<%= user.email %> " readonly />
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Contact Number</th>
+                        <td><input type="number" id="contactnumber" name="contactnumber" class="form-control"
+                                value="<%= user.contactnumber %>" readonly />
+                        </td>
+                    </tr>
+                    
+                    <tr>
+                        <th>Gender</th>
+                        <td><input type="text" id="gender" name="gender" class="form-control" value="<%= user.gender %> " readonly />
+                        </td>
+                    </tr>
+                    
+                </table>
+               <div style="margin-top: 25px; "> <a href="/users/editprofile" class="btn btn-danger" style="width: 180px;">Edit Profile</a> <a href="/users/changepwd" class="btn btn-danger" style="width: 180px; margin-left: 45%;">Change Password</a> </div>
+                
+            </div>
+        </div>
+    </div>
+</body>

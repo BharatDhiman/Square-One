@@ -1,0 +1,257 @@
+<!-- <title>Square One|Menu</title> -->
+<style>
+    body {
+        background-image: url("/images/back3.jpg");
+    }
+
+    .heading {
+        /* border: 2px solid red; */
+        color: white;
+        text-align: center;
+        font-size: 65px;
+        text-shadow: 5px 5px #FF0000;
+    }
+
+    .selfbutn {
+        width: 45%;
+        margin-left: 25%;
+        margin-top: 15px;
+        font-size: 45px;
+    }
+
+    .dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  /* position: absolute; */
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+</style>
+
+<body>
+
+    <div class="a">
+        <div class="heading"><a href="/" style="text-decoration: none; color: white;">Square One <img src="/images/oneplus.png" width="70px" height="95px"></a></div>
+        <div class="row mt-5">
+            <div class="col-md-12 m-auto">
+                <div class="card card-body text-center">
+                    <h1><i class="fab fa-node-js fa-3x"></i></h1>
+                    <p style="font-size: 60px;">Menu &#128523;</p>
+
+                    <button onclick="myFunction()" class="selfbutn btn btn-outline-info">Chinese</button>
+                    <div id="chinese" class="dropdown-content"> 
+                       <!-- <div><a href=""><img src="/images/noodles.jpg" width="90px" height="90px"><br> Noodles </a></div>
+                    <div><a href=""><img src="/images/manchurian.jpg" width="90px" height="90px"><br> Manchurian </a></div>
+                    <div><a href=""><img src="/images/friedrice.jpg" width="90px" height="90px"><br> Fried Rice </a></div>
+                    <div><a href=""><img src="/images/cheesechilly.jpg" width="90px" height="90px"><br> Cheese Chilly </a></div>
+                    </div> -->
+
+                    <table style="margin-left: 25%;">
+                        <tr>
+                            <td><a href="javascript:" onclick="noodf()"><img src="/images/noodles.jpg" width="90px" height="90px"><br> Noodles 
+                            
+                            
+                            </a>
+                            <div id="noodles" class="dropdown-content">
+                                Rs. 30
+                               
+                                
+                                
+                            </div>
+                            
+                            </td>
+                            <td><a href="javascript:" onclick="manchf()"><img src="/images/manchurian.jpg" width="90px" height="90px"><br> Manchurian 
+                            
+                            
+                            </a>
+                            <div id="manchurian" class="dropdown-content">
+                                Rs. 30
+                                
+                            </div>
+                           </td>
+                            <td><a href="javascript:" onclick="fryf()"><img src="/images/friedrice.jpg" width="90px" height="90px"><br> Fried Rice 
+                            
+                            
+                            </a>
+                            <div id="friedrice" class="dropdown-content">
+                                Rs. 40
+                               
+                            </div>
+                            </td>
+                            <td><a href="javascript:" onclick="cheesef()"><img src="/images/cheesechilly.jpg" width="90px" height="90px"><br> Cheese Chilly 
+                            
+                            
+                            </a>
+                            <div id="cheesechilly" class="dropdown-content">
+                                Rs. 90
+                                
+                            </div>
+                        
+                            </td>
+                        </tr>
+
+                    </table>
+                    </div>
+
+                    <button onclick="fun2()" class="selfbutn btn btn-outline-info">Indian</button>
+                    <div id="indian" class="dropdown-content">
+                        <table style="margin-left: 25%;">
+                            <tr>
+                                <td><a href="javascript:" onclick="rajmaf()"><img src="/images/rajmachawal.jpg" width="90px" height="90px"><br> Rajma Chawal </a>
+                                <div id="rajmachawal" class="dropdown-content">
+                                    Rs. 50
+                                
+                                </div>
+                                
+                                </td>
+                                <td><a href="javascript:" onclick="shahif()"><img src="/images/shahipaneer.jpg" width="90px" height="90px"><br> Shahi Paneer </a>
+                                <div id="shahipaneer" class="dropdown-content">
+                                    Rs. 50
+                                
+                                </div></td>
+                                <td><a href="javascript:" onclick="daalf()"><img src="/images/daalmakhani.jpg" width="90px" height="90px"><br> Daal Makhani </a>
+                                    <div id="daalmakhani" class="dropdown-content">
+                                Rs. 25
+                                
+                            </div></td>
+                                <td><a href="javascript:" onclick="mixf()"><img src="/images/mixveg.jpg" width="90px" height="90px"><br> Mix Veg </a>
+                                <div id="mixveg" class="dropdown-content">
+                                    Rs. 25
+                                
+                                </div>
+                                </td>
+                            </tr>
+                        
+                        </table>
+                    </div>
+                
+                    <a href="/" class="btn btn-danger selfbutn">Back</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* When the user clicks on the button, 
+    toggle between hiding and showing the dropdown content */
+        var noodQ=0;
+        var manchQ=0;
+        var cheeseQ=0;
+        var fryQ=0;
+        var rajmaQ=0;
+        var shahiQ=0;
+        var daalQ=0;
+        var mixQ=0;
+
+        var price=0;
+
+        
+
+            function myFunction() {
+                document.getElementById("chinese").classList.toggle("show");
+                
+            }
+
+            function fun2(){
+                document.getElementById("indian").classList.toggle("show");
+            }
+
+            function noodf(){
+                document.getElementById("noodles").classList.toggle("show");
+                noodQ = document.getElementById("nQ").value;
+               // document.write(noodQ);
+            }
+            function noodBill()
+            {
+                 noodQ = document.getElementById("nQ").value;
+               // document.write(noodQ);
+
+               price=price+(noodQ*30);
+              
+            }
+            function manchf(){
+                document.getElementById("manchurian").classList.toggle("show");
+            }
+            function manchBill() {
+                    manchQ = document.getElementById("manchQ").value;
+                    // document.write(noodQ);
+
+                    price = price + (manchQ * 30);
+                   
+                }
+
+            function cheesef(){
+                document.getElementById("cheesechilly").classList.toggle("show")
+            }
+            function cheeseBill() {
+                    cheeseQ = document.getElementById("cheeseQ").value;
+                    // document.write(noodQ);
+
+                    price = price + (cheeseQ * 90);
+                   
+                }
+
+            function fryf(){
+                document.getElementById("friedrice").classList.toggle("show")
+            }
+            function fryBill() {
+                    fryQ = document.getElementById("fryQ").value;
+                    // document.write(noodQ);
+
+                    price = price + (fryQ * 40);
+                    
+                }
+
+
+                function total()
+                {
+                    document.write(price);
+                }
+
+
+                function rajmaf() {
+                        document.getElementById("rajmachawal").classList.toggle("show");
+                    }
+                    function shahif() {
+                            document.getElementById("shahipaneer").classList.toggle("show");
+                        }
+                        function daalf() {
+                                document.getElementById("daalmakhani").classList.toggle("show");
+                            }
+                            function mixf() {
+                                    document.getElementById("mixveg").classList.toggle("show");
+                                }
+    </script>
+</body>

@@ -1,0 +1,140 @@
+<style>
+    body {
+        background-image: url("/images/back3.jpg");
+    }
+
+    .heading {
+        /* border: 2px solid red; */
+        color: white;
+        text-align: center;
+        font-size: 65px;
+        text-shadow: 5px 5px #FF0000;
+    }
+
+    .selfbutn {
+        width: 45%;
+        margin-left: 25%;
+        margin-top: 15px;
+        font-size: 45px;
+    }
+
+    .dropbtn {
+        background-color: #3498DB;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .dropbtn:hover,
+    .dropbtn:focus {
+        background-color: #2980B9;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        /* position: absolute; */
+        background-color: #f1f1f1;
+        min-width: 160px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown a:hover {
+        background-color: #ddd;
+    }
+
+    .show {
+        display: block;
+    }
+</style>
+
+<body>
+
+
+
+  
+        <div class="heading"><a href="/dashboard" style="text-decoration: none; color: white;">Square One <img
+                    src="/images/oneplus.png" width="70px" height="95px"></a></div>
+
+        <div>
+            <span style="color: white;">
+                <p class="btn btn-primary"><b><%= user.name %> &#129312;</b></p>
+            </span>
+            <a href="/dashboard" class="btn btn-danger">Back</a>
+        </div>
+        
+
+               <div class="row mt-5">
+            <div class="col-md-12 m-auto">
+                <div class="card card-body text-center">
+
+                    <p style="font-size: 60px;">Recharge Requests</p>
+                    <%-include('./partials/messages.ejs'); %>
+
+                    <% if(user.rechargeReq.length == 0){%>
+                    
+                    
+                    <h1>No Requests &#128532;</h1>
+                    
+                    <% } %>
+                  
+                    <% if(user.rechargeReq.length > 0){%>
+                   <table>
+                    <tr>
+                        <th>Contact Number</th>
+                        <th>Email</th>
+                        <th>Amount</th>
+                    </tr>
+                    <% var i=0; %>
+                    <% while(user.rechargeReq[i]) { %>
+                        <tr>
+                            <form  method="POST">
+                            <td><div class="form-group">
+                                <input type="number" id="contact" name="contact" class="form-control" value="<%= user.rechargeReq[i].contact+910000000000 %>" readonly />
+                            </div></td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="text" id="email" name="email" class="form-control" value="<%= user.rechargeReq[i].email %>"
+                                        readonly />
+                                </div>
+                            </td>
+                            <td>
+                                <div class="form-group">
+                                    <input type="number" id="amount" name="amount" class="form-control" value="<%= user.rechargeReq[i].amount %>"
+                                        readonly />
+                                </div>
+                            </td>
+                            <td>
+                                <button type="submit" class="btn btn-primary btn-block" id="accept" formaction="/users/acceptrech">Accept</button>
+                            </td>
+                            
+                            <td>
+                                <button  class="btn btn-danger btn-block" id="reject" formaction="/users/rejectrech">Reject</button>
+                            </td>
+                            </form>
+                        </tr>
+                        <% i++ %>
+                        <% } %>
+
+                   </table>
+                <% } %>
+
+                </div>
+                </div>
+                </div>
+            </body>

@@ -1,0 +1,181 @@
+<style>
+    body {
+        background-image: url("/images/back3.jpg");
+    }
+
+    .heading {
+        /* border: 2px solid red; */
+        color: white;
+        text-align: center;
+        font-size: 65px;
+        text-shadow: 5px 5px #FF0000;
+    }
+
+    .selfbutn {
+        width: 45%;
+        margin-left: 25%;
+        margin-top: 15px;
+        font-size: 45px;
+    }
+
+    .dropbtn {
+        background-color: #3498DB;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+        cursor: pointer;
+    }
+
+    .dropbtn:hover,
+    .dropbtn:focus {
+        background-color: #2980B9;
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown-content {
+        display: none;
+        /* position: absolute; */
+        background-color: #f1f1f1;
+        min-width: 160px;
+        overflow: auto;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+    .dropdown a:hover {
+        background-color: #ddd;
+    }
+
+    .show {
+        display: block;
+    }
+</style>
+
+<body>
+
+
+
+    <div class="a">
+        <div class="heading"><a href="/dashboard" style="text-decoration: none; color: white;">Square One <img
+                    src="/images/oneplus.png" width="70px" height="95px"></a></div>
+
+        <div>
+            <span style="color: white;">
+                <p class="btn btn-primary"><b><%= user.name %> &#129312;</b></p>
+            </span>
+            <a href="/dashboard" class="btn btn-danger">Back</a>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-6 m-auto">
+                <div class="card card-body divanimation">
+                <%-include('./partials/messages.ejs'); %>
+                <div class="container">
+                    <h2>Verification for Recharge</h2>
+                    <input type="email" name="email" id="email" value="<%= user.email %> ">
+                    
+                    <input type="button" id="button" value="Send OTP" class="btn btn-danger">
+                    <p class="response">
+                
+                    </p>
+                </div>
+                
+           
+                <div class="dropdown-content" id="recharge">
+                    
+                    <label for="otpverify">Enter OTP</label>
+                    <input type="number" id="otpverify" name="otpverify"  placeholder="Enter OTP" />
+                    <!-- <input type="submit" id="verifyotp" value="Verify" class="btn btn-danger" onsubmit="verify()"> -->
+                    <button onclick="verify()" id="verify">Verify</button>
+                  
+                </div>
+
+
+                <div class="dropdown-content" id="recharge2">
+                    
+                    <form action="/users/recharge" method="POST">
+                        <div class="form-group">
+                            <label for="amount">Amount</label>
+                            <input type="number" id="amount" name="amount" class="form-control" placeholder="Enter Amount" />
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-block">Recharge</button>
+                    </form>
+                </div>
+               
+             
+            
+            </div>
+            </div>
+            </div>
+
+
+            
+            <script>
+                const //numberInput = document.getElementById('number'),
+                        email = document.getElementById('email')
+                        button = document.getElementById('button'),
+                        response = document.querySelector('.response');
+
+                    button.addEventListener('click', send, false);
+
+                    var ot;
+
+                    function send() {
+                       // const number = numberInput.value.replace(/\D/g, '');
+                        
+                        var otp = Math.floor(Math.random() * 10000) + 1000;
+                        ot=otp;
+                        const onetime = "OTP "+ otp;
+
+                        fetch('/users/otpsend', {
+                            method: 'post',
+                            headers: {
+                                'Content-type': 'application/json'
+                            },
+                            body: JSON.stringify({ email: email, onetp: onetime })
+                        })
+                            .then((res) => {
+                                console.log(res);
+                                
+                            })
+                            .catch((err) => {
+                                console.log(err);
+                            })
+
+                             document.getElementById("recharge").classList.toggle("show");
+                    }
+
+
+
+                   
+                    
+                    
+                    function verify(){
+                       
+
+                    const usrotp = document.getElementById('otpverify').value;
+
+                        if(usrotp==ot)
+                        {
+                             document.getElementById("recharge2").classList.toggle("show");
+                        }
+                        else{
+                            alert('Invalid OTP');
+                        }
+                    }
+
+            </script>
+
+</body>

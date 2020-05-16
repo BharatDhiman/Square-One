@@ -1,0 +1,75 @@
+<style>
+    .heading {
+        /* border: 2px solid red; */
+        color: white;
+        text-align: center;
+        font-size: 65px;
+        text-shadow: 5px 5px #FF0000;
+    }
+
+    body {
+        margin: 0;
+        padding: 0;
+        background-image: url("/images/back5.jpg");
+
+    }
+
+    .divanimation {
+        animation: bgcolor infinite 5s;
+    }
+
+    @keyframes bgcolor {
+        0% {
+            background: #eccc68;
+        }
+
+        20% {
+            background: #ff7f50;
+        }
+
+        40% {
+            background: #ff6348;
+        }
+
+        60% {
+            background: #ff6b81;
+        }
+
+        80% {
+            background: #feca57;
+        }
+
+        100% {
+            background: #eccc68;
+        }
+    }
+</style>
+
+<body>
+    <div class="heading"><a href="/" style="text-decoration: none; color: white;">Square One <img
+                src="/images/oneplus.png" width="70px" height="95px"></a></div>
+    <div class="row mt-5">
+        <div class="col-md-6 m-auto">
+            <div class="card card-body divanimation">
+                <h1 class="text-center mb-3">
+                    Login
+                </h1>
+                <%-include('./partials/messages.ejs'); %>
+<form action="/users/login" method="POST">
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" class="form-control" placeholder="Enter Email" />
+    </div>
+    <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Enter Password" />
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Login</button>
+</form>
+<p class="lead mt-4">
+    No Account? <a href="/users/register">Register</a>
+</p>
+            </div>
+        </div>
+    </div>
+</body>
